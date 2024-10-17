@@ -1,89 +1,102 @@
-# Metro App
+Optimal Route Finder
+Optimal Route Finder is a Python application designed to provide users with the most efficient routes within a metro system. Leveraging graph data structures and algorithms, this application aims to enhance public transport navigation by offering optimal path-finding capabilities.
 
-A Java application that represents a metro system using a graph data structure. It provides functionalities for managing metro stations, adding edges (routes), checking for paths, and calculating the shortest distance and time between stations.
+Table of Contents
+Features
+Installation
+Usage
+Architecture
+Data Structures
+Algorithms
+Contributing
+License
+Acknowledgements
+Features
+Find the shortest path between two stations using Dijkstra's algorithm.
+Visual representation of the metro map.
+User-friendly command-line interface.
+Detailed route information, including total distance and travel time.
+Installation
+Prerequisites
+Make sure you have Python 3.x installed on your machine. You can download it from python.org.
 
-## Table of Contents
+Clone the Repository
+bash
+Copy code
+git clone https://github.com/YOUR_USERNAME/Optimal-Route-Finder.git
+cd Optimal-Route-Finder
+Install Required Packages
+Use the following command to install the necessary Python packages:
 
-- [Getting Started](#getting-started)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Flowcharts](#flowcharts)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
-## Getting Started
-
-This section will guide you through the process of setting up your development environment for this project.
-
-### Prerequisites
-
-Make sure you have the following installed:
-
-- **Java Development Kit (JDK)** version 1.8 or higher 
-
-### Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/nagendracse24/Optimal-Route_Finder.git
-   cd Metro_Map
-Compile the code:
-
-CopyReplit
-javac Graph_M.java
+bash
+Copy code
+pip install -r requirements.txt
+Usage
 Run the application:
 
-CopyReplit
-java Graph_M
-Usage
-Upon running the application, you will be presented with a menu of options. The application allows you to:
+bash
+Copy code
+python main.py
+Follow the prompts to enter the starting and ending stations.
 
-List all metro stations.
-Show the metro map.
-Get the shortest distance between two stations.
-Get the shortest time to reach between two stations.
-Get the shortest path based on the distance between stations.
-Get the shortest path based on the time between stations.
-Exit the application.
-Example
-After launching the application, you can interact with it as follows:
+The application will output the optimal route, along with details such as distance and estimated travel time.
 
-CopyReplit
-~~LIST OF ACTIONS~~
-1. LIST ALL THE STATIONS IN THE MAP
-2. SHOW THE METRO MAP
-3. GET SHORTEST DISTANCE ...
-...
-You can enter the corresponding number to choose an action.
+Architecture
+The Optimal Route Finder application is structured into several modules, each responsible for specific functionalities:
 
-Features
-Graph Representation: Efficiently represents metro stations and connections using the graph data structure.
-Dynamic Management: Easily add and remove stations and routes (edges) between them.
-Pathfinding: Check for direct paths between stations and find the shortest route.
-User-Friendly: Displays the entire metro map and list of stations in a clear format.
-Flowcharts
-Flowcharts that illustrate the flow of operations within the application can be beneficial for understanding. Below are some example flowcharts to consider:
+Main Module: Handles user input and initiates the route-finding process.
+Graph Module: Represents the metro system as a graph, with stations as nodes and routes as edges.
+Algorithm Module: Implements Dijkstra’s algorithm for finding the shortest path.
+Data Visualization Module: (Optional) Visualizes the metro map and the calculated route.
+Directory Structure
+bash
+Copy code
+Optimal-Route-Finder/
+│
+├── main.py                # Main entry point of the application
+├── graph.py               # Graph data structure for metro stations and routes
+├── algorithm.py           # Implementation of path-finding algorithms
+├── visualization.py        # Optional: Visualizes the metro map and route
+├── requirements.txt        # List of dependencies
+└── README.md              # Project documentation
+Data Structures
+The application uses a graph data structure to represent the metro system. Each station is a node, and each route is an edge connecting the nodes. The graph is implemented using an adjacency list for efficient space and time complexity.
 
-Flowchart for User Interaction: 
-Flowchart for User Interaction
+Example of Graph Representation
+python
+Copy code
+class Graph:
+    def __init__(self):
+        self.stations = {}  # Dictionary to store station names and their connections
 
-Flowchart for Dijkstra’s Algorithm: 
-Flowchart for Dijkstra’s Algorithm
+    def add_edge(self, station1, station2, weight):
+        # Adds a bi-directional edge between two stations with a specified weight
+        if station1 not in self.stations:
+            self.stations[station1] = {}
+        if station2 not in self.stations:
+            self.stations[station2] = {}
+        self.stations[station1][station2] = weight
+        self.stations[station2][station1] = weight
+Algorithms
+The primary algorithm used for finding the optimal route is Dijkstra's algorithm, which efficiently finds the shortest path in a weighted graph.
 
-
+Dijkstra's Algorithm Implementation
+python
+Copy code
+def dijkstra(graph, start):
+    # Implementation of Dijkstra's algorithm
+    # Returns the shortest paths from the start station to all other stations
+    pass  # Your implementation here
 Contributing
-Contributions are welcome! Please adhere to the following guidelines:
+Contributions are welcome! If you would like to contribute to the Optimal Route Finder, please follow these steps:
 
 Fork the repository.
 Create a new branch (git checkout -b feature-branch).
 Make your changes and commit them (git commit -m 'Add new feature').
 Push to the branch (git push origin feature-branch).
-Open a pull request.
+Create a pull request.
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-Contact
-Yuvraj Tripathi - nagendracse24@gmail.com
-Project Link: https://github.com/nagendracse24/Optimal-Route_Finder/
+Acknowledgements
+Dijkstra's algorithm
