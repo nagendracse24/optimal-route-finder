@@ -1,4 +1,4 @@
-Optimal Route Finder
+#Optimal Route Finder
 Optimal Route Finder is a Python application designed to provide users with the most efficient routes within a metro system. Leveraging graph data structures and algorithms, this application aims to enhance public transport navigation by offering optimal path-finding capabilities.
 
 Table of Contents
@@ -23,7 +23,7 @@ Make sure you have Python 3.x installed on your machine. You can download it fro
 Clone the Repository
 bash
 Copy code
-git clone https://github.com/YOUR_USERNAME/Optimal-Route-Finder.git
+git clone https://github.com/nagendracse24/Optimal-Route-Finder.git
 cd Optimal-Route-Finder
 Install Required Packages
 Use the following command to install the necessary Python packages:
@@ -96,7 +96,7 @@ Make your changes and commit them (git commit -m 'Add new feature').
 Push to the branch (git push origin feature-branch).
 Create a pull request.
 License
-This project is licensed under the MIT License. See the LICENSE file for details.
+
 
 Acknowledgements
 Dijkstra's algorithm
