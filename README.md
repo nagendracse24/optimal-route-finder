@@ -95,7 +95,51 @@ Create a new branch (git checkout -b feature-branch).
 Make your changes and commit them (git commit -m 'Add new feature').
 Push to the branch (git push origin feature-branch).
 Create a pull request.
-License
+Architecture
+The Optimal Route Finder application is designed using a modular architecture to ensure scalability, maintainability, and ease of use. Below is an overview of the architecture components:
+
+1. Overview
+The application implements a graph-based approach to find the optimal route on a metro map. It uses algorithms such as Dijkstra's algorithm to compute the shortest path between two stations.
+
+2. Components
+User Interface (UI)
+
+Description: The UI is built using [mention the framework or library you used, e.g., Tkinter, Flask, etc.]. It allows users to input starting and destination stations and displays the calculated route along with additional information.
+Responsibilities:
+Accept user inputs for source and destination stations.
+Display the optimal route and other relevant details, such as total distance and travel time.
+Route Calculation Module
+
+Description: This module contains the core logic for route calculation, utilizing graph algorithms.
+Responsibilities:
+Represent the metro map as a graph using adjacency lists or matrices.
+Implement the Dijkstra algorithm (or other pathfinding algorithms) to determine the shortest path.
+Handle edge cases, such as unreachable stations.
+Data Storage
+
+Description: The application stores metro station data and routes in a structured format (e.g., JSON, CSV, or a database).
+Responsibilities:
+Load metro map data into the application.
+Provide methods to update and manage station and route data.
+Configuration Management
+
+Description: A configuration module manages application settings and constants, such as metro station names and distances.
+Responsibilities:
+Store and manage configuration data for easy access and modification.
+Facilitate easy adjustments to routes and stations without altering core logic.
+3. Data Flow
+User Interaction: The user inputs the starting and destination stations via the UI.
+Data Retrieval: The application retrieves the metro map data from the data storage.
+Route Calculation: The route calculation module processes the input using graph algorithms to find the optimal path.
+Output Display: The calculated route and additional details are displayed on the UI for the user.
+4. Dependencies
+List any external libraries or frameworks used in the project (e.g., NumPy, Pandas, etc.).
+5. Future Enhancements
+Potential enhancements include:
+Integration of real-time data for train schedules.
+Adding more metro lines and stations to the map.
+Implementing user accounts for personalized settings.
+This architecture section should provide users and contributors with a clear understanding of how the application is structured and how its components int
 
 
 Acknowledgements
