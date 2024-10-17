@@ -29,7 +29,7 @@ Make sure you have the following installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yuvi72/Metro_Map.git
+   git clone https://github.com/nagendracse24/Optimal-Route_Finder.git
    cd Metro_Map
 Compile the code:
 
@@ -85,5 +85,5 @@ Push to the branch (git push origin feature-branch).
 Open a pull request.
 
 Contact
-Yuvraj Tripathi - yuvrajtripathi7020@gmail.com
-Project Link: https://github.com/yuvi72/Metro_Map/
+Yuvraj Tripathi - nagendracse24@gmail.com
+Project Link: https://github.com/nagendracse24/Optimal-Route_Finder/
