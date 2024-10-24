@@ -144,3 +144,128 @@ This architecture section should provide users and contributors with a clear und
 
 Acknowledgements
 Dijkstra's algorithm
+
+
+ARCHITECTURE OF OPTIMAL ROUTE FINDER**
+
+The architecture and design of a software system like the Delhi Metro navigation application can be described in terms of its components, relationships, and static structure. Below is a detailed breakdown of the overall system architecture, class design, and the relationships among the components.
+
+### Architecture Overview
+
+1. **Layered Architecture**: 
+   - **Presentation Layer**: Manages user interaction and displays information.
+   - **Business Logic Layer**: Contains the algorithms for graph management, including adding/removing vertices and edges, calculating shortest paths, and handling user commands.
+   - **Data Layer**: Represents the underlying data structure (graph) used to store stations and connections.
+
+### Class Design
+
+Here's a static UML-like representation of the classes involved in the system:
+
+```
+----------------------------------------------------
+|                   Graph_M                          |
+----------------------------------------------------
+| - vtces: HashMap<String, Vertex>                  |
+----------------------------------------------------
+| + Graph_M()                                        |
+| + addVertex(vname: String)                        |
+| + removeVertex(vname: String)                     |
+| + addEdge(vname1: String, vname2: String, value: int) |
+| + removeEdge(vname1: String, vname2: String)     |
+| + containsVertex(vname: String): boolean          |
+| + containsEdge(vname1: String, vname2: String): boolean |
+| + numVertex(): int                                 |
+| + numEdges(): int                                  |
+| + display_Stations()                               |
+| + display_Map()                                    |
+| + hasPath(vname1: String, vname2: String, processed: HashMap<String, Boolean>): boolean |
+| + dijkstra(src: String, des: String, nan: boolean): int |
+| + Get_Minimum_Distance(src: String, dst: String): String |
+| + Get_Minimum_Time(src: String, dst: String): String |
+| + get_Interchanges(str: String): ArrayList<String>|
+| + Create_Metro_Map(g: Graph_M)                   |
+| + printCodelist(): String[]                       |
+----------------------------------------------------
+                         |
+                         | contains
+                         |
+----------------------------------------------------
+|                   Vertex                            |
+----------------------------------------------------
+| - nbrs: HashMap<String, Integer>                   |
+----------------------------------------------------
+| + Vertex()                                         |
+----------------------------------------------------
+                         |
+                         |
+----------------------------------------------------
+|                 DijkstraPair                       |
+----------------------------------------------------
+| - vname: String                                    |
+| - psf: String                                      |
+| - cost: int                                        |
+----------------------------------------------------
+| + DijkstraPair()                                   |
+| + compareTo(o: DijkstraPair): int                 |
+----------------------------------------------------  
+                         |
+                         |
+----------------------------------------------------
+|                   Pair                             |
+----------------------------------------------------
+| - vname: String                                    |
+| - psf: String                                      |
+| - min_dis: int                                    |
+| - min_time: int                                    |
+----------------------------------------------------
+| + Pair()                                          |
+----------------------------------------------------
+```
+
+### Components Breakdown
+
+1. **Graph_M**:
+   - The main class responsible for representing the graph where vertices are metro stations and edges represent the connecting routes with weights (distance or time).
+   - Contains methods to manage vertices and edges and to perform pathfinding algorithms.
+
+2. **Vertex**:
+   - Represents a station in the metro system.
+   - Stores neighboring stations and the distances to those neighbors as a hashmap.
+
+3. **DijkstraPair**:
+   - Used in the Dijkstra algorithm to store information for each node (station) during the pathfinding process.
+   - Implements the `Comparable` interface to facilitate priority queue operations.
+
+4. **Pair**:
+   - Used for storing minimum distance and time information for each station during pathfinding searches.
+
+### Static State Design
+
+- **Attributes**:
+   - **vtces** (in `Graph_M`): Storage for all vertices (stations) in the form of a HashMap where the key is the station name and the value is a `Vertex` object.
+   - **nbrs** (in `Vertex`): A hashmap that holds neighbors (connected stations) and the distances (weights) to them.
+
+- **Relationships**:
+   - **Composition**:
+      - `Graph_M` contains multiple `Vertex` objects, each representing a metro station.
+      - Each `Vertex` contains references to its neighboring stations (stored in the `nbrs` hashmap).
+
+### Use Case Flow
+
+1. **Initialization**:
+   - The `Graph_M` class is instantiated.
+   - `Create_Metro_Map(g)` method populates the graph with metro stations (vertices) and connections (edges).
+
+2. **User Interaction**:
+   - The user is prompted to choose an action from a list (display stations, find shortest path, etc.).
+   - The corresponding method in `Graph_M` is invoked based on the user’s choice.
+
+3. **Pathfinding**:
+   - For pathfinding, methods like `dijkstra` or `Get_Minimum_Distance` are called, invoking the core logic to calculate paths between two stations based on user input.
+
+4. **Output**:
+   - After processing, the results (like shortest distance or available interchanges) are displayed to the user.
+
+### Summary
+
+This structured view of the Delhi Metro navigation system enables better understanding and maintainability. Each class has a clear purpose, with responsibilities segregated to foster clean interaction patterns within the system. The design can be adapted or extended to accommodate more advanced features or integrate with a front-end interface for enhanced user experience.
